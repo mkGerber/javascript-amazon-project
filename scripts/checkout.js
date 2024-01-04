@@ -98,6 +98,15 @@ cart.forEach((cartItem) => {
     `;
 });
 
+function updateCartLength(){
+    document.querySelector(".js-checkout-header").innerHTML = 
+    `
+        Checkout (<a class="return-to-home-link"
+        href="amazon.html">${cart.length} items</a>)
+    `;
+}
+    
+
 console.log(cartSummaryHTML);
 document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
 
@@ -106,5 +115,8 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
         const productId = link.dataset.productId;
         removeFromCart(productId);
         document.querySelector(`.js-cart-item-container-${productId}`).remove();
+        updateCartLength();
     })
 });
+
+updateCartLength();
