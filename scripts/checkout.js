@@ -106,7 +106,7 @@ function updateCartLength(){
     document.querySelector(".js-checkout-header").innerHTML = 
     `
         Checkout (<a class="return-to-home-link"
-        href="amazon.html">${cart.length} items</a>)
+        href="index.html">${cart.length} items</a>)
     `;
 }
     
