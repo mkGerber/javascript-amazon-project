@@ -116,7 +116,62 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
         removeFromCart(productId);
         document.querySelector(`.js-cart-item-container-${productId}`).remove();
         updateCartLength();
+        updateSummary();
     })
 });
 
+function updateSummary(){
+    let subtotal = 0;
+    cart.forEach((cartItem) => {
+        const productId = cartItem.productId;
+        let matchingProduct;
+
+        products.forEach((product) => {
+            if (product.id === productId){
+                matchingProduct = product;
+            }
+        });
+        subtotal += matchingProduct.priceCents * cartItem.quantity;
+    });
+    document.querySelector(".js-payment-summary").innerHTML =
+    `
+        <div class="payment-summary-title">
+            Order Summary
+        </div>
+
+        <div class="payment-summary-row">
+            <div>Items (${cart.length}):</div>
+            <div class="payment-summary-money">$${formatCurrency(subtotal)}</div>
+        </div>
+
+        <div class="payment-summary-row">
+            <div>Shipping &amp; handling:</div>
+            <div class="payment-summary-money">$0.00</div>
+        </div>
+
+        <div class="payment-summary-row subtotal-row">
+            <div>Total before tax:</div>
+            <div class="payment-summary-money">$${formatCurrency(subtotal)}</div>
+        </div>
+
+        <div class="payment-summary-row">
+            <div>Estimated tax (10%):</div>
+            <div class="payment-summary-money">$${formatCurrency(subtotal *.1)}</div>
+        </div>
+
+        <div class="payment-summary-row total-row">
+            <div>Order total:</div>
+            <div class="payment-summary-money">$${(formatCurrency(subtotal + (subtotal *.1)))}</div>
+        </div>
+
+        <button class="place-order-button button-primary">
+            Place your order
+        </button>
+    `
+
+}
+
+
+
 updateCartLength();
+updateSummary();
