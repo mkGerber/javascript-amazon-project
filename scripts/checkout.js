@@ -98,6 +98,10 @@ cart.forEach((cartItem) => {
     `;
 });
 
+if (cart.length === 0){
+    cartSummaryHTML = "Your cart is empty.";
+}
+
 function updateCartLength(){
     document.querySelector(".js-checkout-header").innerHTML = 
     `
