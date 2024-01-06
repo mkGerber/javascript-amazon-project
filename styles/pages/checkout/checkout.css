@@ -209,3 +209,20 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+.view-products{
+  background-color: rgb(255, 216, 20);
+  border: none;
+  font-size: 13px;
+  padding: 12px 50px;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+}
+.view-products:hover{
+  background-color: rgb(235, 199, 22);
+}
+.view-products:active{
+  background-color: rgb(255, 216, 20);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  
+}
