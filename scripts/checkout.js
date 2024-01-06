@@ -182,7 +182,7 @@ function checkEmptyCart(){
             <button class="view-products">View Products</button>
         `;
         document.querySelector(".view-products").addEventListener("click", () => {
-            window.location.href = "../index.html";
+            window.location.href = "index.html";
         });
     }
     
